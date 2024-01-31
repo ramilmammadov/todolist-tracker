@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<div wicket:id="head"></div>
+
+<body class="d-flex flex-column h-100">
+
+<div wicket:id="navbar"></div>
+
+
+<!-- Page Content -->
+<div id="page-content" class="container">
+
+    <div class="container my-4">
+        <h2 class="text-center mb-4">Task Management Board</h2>
+
+        <div class="row">
+            <!-- To Do Column -->
+            <div class="col-md-4" id="todo-column">
+                <h3>To Do</h3>
+                <!-- List of tasks -->
+                <div class="card mb-3 draggable" draggable="true" id="task1">
+                    <div class="card-body">
+                        Fixing some defects
+                    </div>
+                </div>
+                <div class="card mb-3 draggable" draggable="true" id="task1">
+                    <div class="card-body">
+                        Cleaning the facade
+                    </div>
+                </div>
+                <div class="card mb-3 draggable" draggable="true" id="task1">
+                    <div class="card-body">
+                        Renewing the fire extinguishers
+                    </div>
+                </div>
+            </div>
+
+            <!-- In Progress Column -->
+            <div class="col-md-4" id="inprogress-column">
+                <h3>In Progress</h3>
+                <!-- List tasks here -->
+            </div>
+
+            <!-- Done Column -->
+            <div class="col-md-4" id="done-column">
+                <h3>Done</h3>
+                <!-- List completed tasks here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div wicket:id="footer"></div>
+</body>
+</html>
