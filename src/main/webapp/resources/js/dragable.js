@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Function to handle dragover and drop events for columns
     function setupDropZone(dropZoneId) {
+        console.log(dropZoneId + " setted as dropzone")
         const dropZone = document.getElementById(dropZoneId);
 
         dropZone.addEventListener('dragover', (event) => {

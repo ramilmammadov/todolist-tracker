@@ -1,18 +1,19 @@
-package com.dreamhouserealty;
+package com.dreamhouserealty.model.entity;
 
 import com.dreamhouserealty.model.enums.TaskStatus;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import org.hibernate.annotations.ColumnTransformer;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "tasks")
@@ -20,7 +21,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Task {
+@Cacheable(false)
+public class Task implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +33,8 @@ public class Task {
   private String description;
 
   @Enumerated(EnumType.STRING)
+  @Column(name = "status")
+  @ColumnTransformer(write = "?::task_status")
   private TaskStatus status;
 
   @Column(name = "creation_date")
