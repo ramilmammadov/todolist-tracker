@@ -1,10 +1,13 @@
 package com.dreamhouserealty;
 
 import com.dreamhouserealty.pages.HomePage;
-import org.apache.wicket.csp.CSPDirective;
-import org.apache.wicket.csp.CSPDirectiveSrcValue;
+import com.dreamhouserealty.util.HibernateUtil;
+import com.dreamhouserealty.util.properties.DatabaseProperties;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.flywaydb.core.Flyway;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start
@@ -13,6 +16,8 @@ import org.apache.wicket.protocol.http.WebApplication;
  * @see com.dreamhouserealty.Start#main(String[])
  */
 public class WicketApplication extends WebApplication {
+  private SessionFactory sessionFactory;
+
   /**
    * @see org.apache.wicket.Application#getHomePage()
    */
@@ -27,10 +32,7 @@ public class WicketApplication extends WebApplication {
   @Override
   public void init() {
     super.init();
-
-    // needed for the styling used by the quickstart
+    HibernateUtil.initialize();
     getCspSettings().blocking().disabled();
-
-    // add your configuration here
   }
 }

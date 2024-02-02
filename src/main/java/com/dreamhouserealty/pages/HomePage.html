@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
-<div wicket:id="head"></div>
+<head>
+    <div wicket:id="head"></div>
+</head>
 
 <body class="d-flex flex-column h-100">
 
 <div wicket:id="navbar"></div>
-
 
 <!-- Page Content -->
 <div id="page-content" class="container">
@@ -15,41 +16,35 @@
 
         <div class="row">
             <!-- To Do Column -->
-            <div class="col-md-4" id="todo-column">
+            <div class="col-md-4 drop-zone" id="todo-column" data-status="TODO">
                 <h3>To Do</h3>
                 <!-- List of tasks -->
-                <div class="card mb-3 draggable" draggable="true" id="task1">
-                    <div class="card-body">
-                        Fixing some defects
-                    </div>
-                </div>
-                <div class="card mb-3 draggable" draggable="true" id="task1">
-                    <div class="card-body">
-                        Cleaning the facade
-                    </div>
-                </div>
-                <div class="card mb-3 draggable" draggable="true" id="task1">
-                    <div class="card-body">
-                        Renewing the fire extinguishers
-                    </div>
+                <div wicket:id="todoListView">
+                    <wicket:container wicket:id="taskCardPanelContainer"></wicket:container>
                 </div>
             </div>
 
             <!-- In Progress Column -->
-            <div class="col-md-4" id="inprogress-column">
+            <div class="col-md-4 drop-zone" id="inprogress-column" data-status="IN_PROGRESS">
                 <h3>In Progress</h3>
-                <!-- List tasks here -->
+                <div wicket:id="inProgressListView">
+                    <wicket:container wicket:id="inProgressCardPanelContainer"></wicket:container>
+                </div>
             </div>
 
             <!-- Done Column -->
-            <div class="col-md-4" id="done-column">
+            <div class="col-md-4 drop-zone" id="done-column" data-status="DONE">
                 <h3>Done</h3>
-                <!-- List completed tasks here -->
+                <div wicket:id="doneListView">
+                    <wicket:container wicket:id="doneCardPanelContainer"></wicket:container>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<script wicket:id="callbackScript" type="text/javascript"></script>
+<script src="resources/js/home.js"></script>
 <div wicket:id="footer"></div>
 </body>
 </html>
