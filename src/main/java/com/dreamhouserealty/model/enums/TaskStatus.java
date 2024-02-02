@@ -1,4 +1,10 @@
 package com.dreamhouserealty.model.enums;
 
-public class TaskStatus {
+import lombok.Getter;
+
+@Getter
+public enum TaskStatus {
+  TODO,
+  IN_PROGRESS,
+  DONE
 }

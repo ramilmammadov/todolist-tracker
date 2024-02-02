@@ -8,4 +8,5 @@ public class BasePage extends WebPage {
     add(new NavBarPanel("navbar"));
     add(new FooterPanel("footer"));
   }
+
 }

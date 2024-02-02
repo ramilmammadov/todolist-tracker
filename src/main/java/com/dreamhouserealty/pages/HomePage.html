@@ -1,55 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:wicket="http://wicket.apache.org">
-<div wicket:id="head"></div>
+package com.dreamhouserealty.pages;
 
-<body class="d-flex flex-column h-100">
+import org.apache.wicket.markup.head.*;
+import org.apache.wicket.markup.html.panel.Panel;
 
-<div wicket:id="navbar"></div>
+public class HeadPanel extends Panel {
+  public HeadPanel(String id) {
+    super(id);
+  }
 
+  @Override
+  public void renderHead(IHeaderResponse response) {
+    super.renderHead(response);
 
-<!-- Page Content -->
-<div id="page-content" class="container">
+    // Meta tags
+    response.render(StringHeaderItem.forString("<meta charset=\"UTF-8\">"));
+    response.render(
+        StringHeaderItem.forString("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"));
+    response.render(StringHeaderItem.forString("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">"));
 
-    <div class="container my-4">
-        <h2 class="text-center mb-4">Task Management Board</h2>
+    // Title
+    response.render(StringHeaderItem.forString("<title>DreamHouseRealty.com</title>"));
 
-        <div class="row">
-            <!-- To Do Column -->
-            <div class="col-md-4" id="todo-column">
-                <h3>To Do</h3>
-                <!-- List of tasks -->
-                <div class="card mb-3 draggable" draggable="true" id="task1">
-                    <div class="card-body">
-                        Fixing some defects
-                    </div>
-                </div>
-                <div class="card mb-3 draggable" draggable="true" id="task1">
-                    <div class="card-body">
-                        Cleaning the facade
-                    </div>
-                </div>
-                <div class="card mb-3 draggable" draggable="true" id="task1">
-                    <div class="card-body">
-                        Renewing the fire extinguishers
-                    </div>
-                </div>
-            </div>
+    // External CSS
+    response.render(
+        CssReferenceHeaderItem.forUrl("https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"));
+    response.render(
+        CssReferenceHeaderItem.forUrl("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"));
+    response.render(CssReferenceHeaderItem.forUrl("resources/css/index.css"));
 
-            <!-- In Progress Column -->
-            <div class="col-md-4" id="inprogress-column">
-                <h3>In Progress</h3>
-                <!-- List tasks here -->
-            </div>
+    // Inline CSS
+    String inlineCss =
+        "body, html { height: 100%; } #page-content { flex: 1 0 auto; } #sticky-footer { flex-shrink: none; }";
+    response.render(OnDomReadyHeaderItem.forScript(
+        "var style = document.createElement('style'); style.innerHTML = '" + inlineCss
+            + "'; document.head.appendChild(style);"));
 
-            <!-- Done Column -->
-            <div class="col-md-4" id="done-column">
-                <h3>Done</h3>
-                <!-- List completed tasks here -->
-            </div>
-        </div>
-    </div>
-</div>
-
-<div wicket:id="footer"></div>
-</body>
-</html>
+    // External JS
+    response.render(
+        JavaScriptReferenceHeaderItem.forUrl("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"));
+    response.render(
+        JavaScriptReferenceHeaderItem.forUrl("https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"));
+  }
+}

@@ -1,0 +1,52 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-header .task-id {
+    flex-grow: 0;
+    margin-right: auto;
+}
+
+.card-header .task-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.draggable:hover {
+    background-color: #f4f4f4;
+    cursor: grab;
+}
+
+#todo-column .card-body {
+    background-color: #d1e7ff;
+}
+
+#inprogress-column .card-body {
+    background-color: #fff3cd;
+}
+
+#done-column .card-body {
+    background-color: #d4edda;
+}
+
+.btn-task {
+    margin-right: 5px;
+}
